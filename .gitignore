@@ -1,0 +1,11 @@
+# editor
+.vscode/
+.idea/
+*.swp
+
+# dependencies
+node_modules/
+
+# dotenv environment variables
+.env
+.env.*
