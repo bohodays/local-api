@@ -2,7 +2,7 @@ import React from "react";
 
 const MsgItem = ({ userId, timestamp, text }) => {
   return (
-    <li className="message__item">
+    <li className="messages__item">
       <h3>
         {userId}{" "}
         <sub>

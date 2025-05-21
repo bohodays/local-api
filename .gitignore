@@ -1,11 +1,41 @@
-# editor
-.vscode/
-.idea/
-*.swp
+# ⚙️ 빌드 결과물
+**/dist/
+**/build/
+**/out/
+**/.next/
+**/.turbo/
+**/.parcel-cache/
+**/.vite/
+**/coverage/
 
-# dependencies
+# 📦 의존성
 node_modules/
 
-# dotenv environment variables
+# 🌍 환경변수
 .env
 .env.*
+**/.env
+**/.env.*
+
+# 🐞 로그
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# 💻 OS/에디터
+.DS_Store
+Thumbs.db
+*.swp
+**/.vscode/
+**/.idea/
+
+# 🧪 테스트 캐시
+**/.jest/
+**/.nyc_output/
+**/jest-cache/
+**/.eslintcache
+
+# 🔧 기타 툴
+**/.cache/
+**/.eslintcache
+**/.stylelintcache
