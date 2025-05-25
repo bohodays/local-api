@@ -17,6 +17,8 @@ const originalMsgs = Array(50)
 
 const MsgList = () => {
   const [msgs, setMsgs] = useState(originalMsgs);
+  const [editingId, setEditingId] = useState(null);
+
   const onCreate = (text) => {
     const newMsg = {
       id: msgs.length + 1,
@@ -27,12 +29,46 @@ const MsgList = () => {
     setMsgs((msgs) => [newMsg, ...msgs]);
   };
 
+  const onUpdate = (id, text) => {
+    setMsgs((msgs) => {
+      const targetIndex = msgs.findIndex((msg) => msg.id === id);
+      if (targetIndex < 0) return msgs;
+      const newMsgs = [...msgs];
+      newMsgs.splice(targetIndex, 1, {
+        ...msgs[targetIndex],
+        text,
+      });
+      return newMsgs;
+    });
+    doneEdit();
+  };
+
+  const onDelete = (id) => {
+    setMsgs((msgs) => {
+      const targetIndex = msgs.findIndex((msg) => msg.id === id);
+      if (targetIndex < 0) return msgs;
+      const newMsgs = [...msgs];
+      newMsgs.splice(targetIndex, 1);
+      return newMsgs;
+    });
+    doneEdit();
+  };
+
+  const doneEdit = () => setEditingId(null);
+
   return (
     <>
       <MsgInput mutate={onCreate} />
       <ul className="messages">
         {msgs.map((item) => (
-          <MsgItem key={item.id} {...item} />
+          <MsgItem
+            key={item.id}
+            {...item}
+            onUpdate={onUpdate}
+            startEdit={() => setEditingId(item.id)}
+            isEditing={editingId === item.id}
+            onDelete={() => onDelete(item.id)}
+          />
         ))}
       </ul>
     </>
