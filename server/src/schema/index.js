@@ -1,5 +1,6 @@
-import messageSchema from "./messages";
-import userSchema from "./users";
+import { gql } from "apollo-server-express";
+import messageSchema from "./messages.js";
+import userSchema from "./users.js";
 
 // linkSchema는 GraphQL 스키마 조합에서 "빈 스키마의 기본 틀을 정의하기 위한 연결 고리" 역할을 합니다.
 // apollo-server 또는 apollo-server-express에서는 모든 스키마는 type Query와 type Mutation이 반드시 존재해야 합니다.

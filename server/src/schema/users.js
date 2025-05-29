@@ -1,3 +1,5 @@
+import { gql } from "apollo-server-express";
+
 const userSchema = gql`
   type User {
     id: ID!
@@ -5,7 +7,7 @@ const userSchema = gql`
   }
 
   extend type Query {
-    users(): [User!]!
+    users: [User!]!
     user(id: ID!): User
   }
 `;
